@@ -6,7 +6,8 @@
 
 my $openssl;
 
-my $dir = "/usr/local/ssl";
+chomp (my $psp_prefix = `psp-config --psp-prefix`);
+my $dir = "$psp_prefix/ssl";
 
 if(defined $ENV{OPENSSL}) {
 	$openssl = $ENV{OPENSSL};

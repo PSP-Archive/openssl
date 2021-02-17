@@ -1,0 +1,25 @@
+--- Makefile	2006-02-03 20:50:06.000000000 -0500
++++ Makefile	2007-06-06 03:14:10.000000000 -0400
+@@ -9,7 +9,7 @@ INCLUDE=	-I. -I$(TOP) -I../include
+ INCLUDES=	-I.. -I../.. -I../../include
+ CFLAG=		-g
+ INSTALL_PREFIX=
+-OPENSSLDIR=     /usr/local/ssl
++OPENSSLDIR=     $(shell psp-config --psp-prefix)/ssl
+ INSTALLTOP=	/usr/local/ssl
+ MAKEDEPPROG=	makedepend
+ MAKEDEPEND=	$(TOP)/util/domd $(TOP) -MD $(MAKEDEPPROG)
+@@ -19,9 +19,11 @@ AR=		ar r
+ 
+ PEX_LIBS=
+ EX_LIBS=
+- 
+-CFLAGS= $(INCLUDE) $(CFLAG)
+ 
++CFLAGS= $(INCLUDE) $(CFLAG) -DOPENSSLDIR="$(OPENSSLDIR)"
++
++foo:
++	echo -- $(CFLAGS)
+ 
+ LIBS=
+ 

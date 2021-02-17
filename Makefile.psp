@@ -1,0 +1,8 @@
+prepare:
+	chmod u+x configure_psp.sh && ./configure_psp.sh
+
+all:
+	make -f Makefile
+
+install:
+	@echo "As root, run make install"
